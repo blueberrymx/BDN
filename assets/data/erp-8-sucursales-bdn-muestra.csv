@@ -1,0 +1,17 @@
+SKU,Nombre_Producto,Marca,Categoria,Tipo_Vehiculo,Precio_Menudeo,Precio_Mayoreo_6Pzas,Compatibilidad_Mecanica,Matriz_Allende,Allende_Motos,Guajardo,Abastos,Galvez,Saucito,Periferico,Salvador_Nava
+CHO-27518-DP,Llanta Choho 2.75-18 Doble Proposito 6 Capas Uso Rudo,Choho,refacciones-moto,moto,540,425,Italika FT125 / FT150 / DT150 / Honda CGL125 Tool / Vento Workman 150,14,18,6,25,10,8,12,9
+NGK-D8EA-JP,Bujia NGK D8EA Estandar Electrodo Cobre Original Japon,NGK,refacciones-moto,moto,65,44,Motores 4T 125cc a 250cc Italika FT150 / DM200 / Honda Cargo 150 / Bajaj,45,60,30,90,40,25,35,50
+KMC-428H-136,Cadena Reforzada KMC 428H x 136L Dorada Heavy Duty,KMC,refacciones-moto,moto,265,198,Italika FT150 / DM150 / DT150 / Kurazai / Carabela / Vento 150cc-200cc,22,30,12,40,15,18,20,14
+AKR-4T-20W50,Aceite Lubricante Akron 4T 20W-50 Mineral API SL 946ml,Akron,refacciones-moto,moto,135,99,Universal Motocicletas 4 Tiempos Enfriadas por Aire 110cc a 250cc,32,48,20,85,28,30,25,36
+VIT-BAL-110,Juego de Balatas Vital Tambor Trasero Alta Friccion Zapata,Vital,refacciones-moto,moto,95,66,Italika FT125 / FT150 / AT110 / Honda CGL125 / Yamaha YBR125,28,35,18,50,22,19,24,20
+GOR-CAM-29,Camara Gorila R29 x 2.10/2.25 Valvula Americana 48mm Butilo,Gorila,refacciones-bici,bici,88,59,Bicicletas de Montana MTB Rodada 29 Windsor / Alubike / Trek / Benotto,38,15,42,60,30,26,22,34
+ALE-E01-PRO,Bicimoto Electrica Alessia E01 Pro 500W 48V Autonomia 45km,Alessia,bicimotos,bicimoto,11490,9850,Movilidad Urbana Sin Placas / Motor Brushless 500W / Bateria 48V 12Ah,4,5,2,6,3,1,2,3
+WIN-MTB-R29,Bicicleta Montana Windsor R29 Aluminio 21V Doble Freno Disco,Windsor,bicicletas,bici,4850,3990,Ciclismo MTB Recreacional y Urbano / Cuadro Aluminio 6061 Talla M/L,6,2,5,10,4,3,4,5
+ALT-URB-R26,Bicicleta Urbana Altrego R26 Clasica con Canastilla y Parrilla,Altrego,bicicletas,bici,3190,2590,Transporte Urbano Diario / Cuadro Acero Hi-Ten con Salpicaderas Cromadas,5,1,6,8,3,4,2,4
+MOT-3000-20W50,Aceite Motul 3000 4T 20W-50 Tecnologia HC-Tech 1 Litro,Motul,refacciones-moto,moto,195,152,Motocicletas 4T de Trabajo y Calle / Certificacion JASO MA2 Embrague Humedo,26,42,14,65,24,20,18,28
+BDN-CAS-DOT,Casco Abatible Certificado DOT Negro Mate Doble Visor Humo,Alessia,refacciones-moto,moto,980,740,Seguridad Vial Certificada FMVSS 218 DOT / Tallas M y L Ventilacion Frontal,10,16,6,20,8,7,9,11
+KIT-ARR-FT150,Kit de Arrastre Completo 428H Corona 42T + Pinon 15T + Cadena,Choho,refacciones-moto,moto,440,335,Italika FT150 / FT150TS / DT150 Sport / Kurazai Delivery 150,15,24,8,32,12,10,14,12
+ERR-NEG-001,Rin Trasero Golpeado Garantias Mostrador,Sin Marca,refacciones-moto,moto,450,380,Pieza en revision de garantia con inventario negativo,-2,0,0,-1,0,0,0,0
+ERR-PRECIO-00, Tornilleria Suelta Mostrador Sin Precio Mayoreo,Generico,refacciones-bici,bici,0,0,Uso interno mostrador sin precio asignado,12,5,0,20,0,0,0,0
+TALLER-INT-99,Solvente Desengrasante Uso Interno Mecanicos BDN,Interno,refacciones-moto,moto,180,180,SOLO TALLER INTERNO - NO VENDER EN WEB,4,6,2,8,2,2,2,2
+ERR-AGOTADO-0,Faro Delantero Descontinuado Modelo 2018,Generico,refacciones-moto,moto,320,250,Sin existencias en ninguna de las 8 sucursales,0,0,0,0,0,0,0,0
