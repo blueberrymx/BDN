@@ -1,77 +1,103 @@
 /**
  * CONTROLADOR DE INTRO CINEMÁTICA (PANTALLA 0) - BICICLETAS DON NABOR
- * Video de presentación en loop / reproducción automática + Transición automática al finalizar
- * Soporte para poster personalizado assets/images/video-bg.jpg
+ * Optimizado para arranque instantáneo en recargas (F5), cero bloqueos de GPU
+ * y transición fluida hacia la tienda.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const introScreen = document.getElementById('intro-screen');
   const startBtn = document.getElementById('btn-start-experience');
+  const skipBtn = document.getElementById('btn-skip-intro');
   const introVideo = document.getElementById('intro-video-element');
   const canvas = document.getElementById('intro-canvas');
 
   let hasEnteredStore = false;
+  let isVideoPlaying = false;
+  let safetyTimer = null;
 
+  // Permitir saltar intro solo si se pide explícitamente por parámetro ?nointro=1 o ?sync=1
   const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('nointro') === '1' || window.location.hash === '#top' || sessionStorage.getItem('bdn_store_entered') === '1') {
+  if (urlParams.get('nointro') === '1' || urlParams.get('sync') === '1' || urlParams.get('admin') === '1') {
     if (introScreen) introScreen.style.display = 'none';
     document.body.style.overflow = '';
+    window.dispatchEvent(new CustomEvent('bdn:intro-finished'));
     return;
   }
 
-  // Iniciar visualizador interactivo
+  // Bloquear scroll de fondo mientras la intro está activa para evitar repintados pesados
+  document.body.style.overflow = 'hidden';
+
+  // Iniciar visualizador ligero de respaldo (se apaga automáticamente apenas arranca el video MP4)
   initCanvasVisualizer(canvas);
 
-  // Configurar video
   if (introVideo) {
     introVideo.muted = true;
+    introVideo.defaultMuted = true;
     introVideo.playsInline = true;
-    
-    // Iniciar reproducción
-    const playPromise = introVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        console.log('Autoplay bloqueado por navegador en PC, transición rápida programada');
-        // Si el navegador bloqueó la reproducción automática, entrar tras 3.5s si no ha interactuado
-        setTimeout(() => {
-          autoEnterStore();
-        }, 3500);
-      });
+    introVideo.loop = false;
+
+    const startPlayback = () => {
+      if (hasEnteredStore) return;
+      try {
+        if (introVideo.currentTime > 0.5) {
+          introVideo.currentTime = 0;
+        }
+      } catch (e) {}
+
+      const playPromise = introVideo.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            isVideoPlaying = true;
+            // Ocultar canvas de respaldo para liberar 100% de GPU al decodificador de video
+            if (canvas) canvas.style.opacity = '0';
+          })
+          .catch(() => {
+            // Si el navegador bloquea autoplay, avanzar suavemente tras 4s
+            setTimeout(autoEnterStore, 4000);
+          });
+      }
+    };
+
+    if (introVideo.readyState >= 2) {
+      startPlayback();
+    } else {
+      introVideo.addEventListener('canplay', startPlayback, { once: true });
+      // Forzar carga limpia en recargas de navegador (evita congelamiento de buffer en Chrome/Edge)
+      introVideo.load();
     }
 
-    // 2. Acabando el video, iniciar la página automáticamente
+    // Al terminar el video, entrar automáticamente a la tienda
     introVideo.addEventListener('ended', () => {
       autoEnterStore();
     });
 
-    // Fallback de seguridad: si dura 15 segundos o al completar su duración, pasar automáticamente
     introVideo.addEventListener('timeupdate', () => {
-      if (introVideo.duration && introVideo.currentTime >= (introVideo.duration - 0.3)) {
+      if (introVideo.duration && introVideo.currentTime >= (introVideo.duration - 0.25)) {
         autoEnterStore();
       }
     });
 
-    // Fallback general máximo: 8 segundos
-    setTimeout(() => {
+    // Fallback de seguridad (16s para respetar los 15s completos del video)
+    safetyTimer = setTimeout(() => {
       autoEnterStore();
-    }, 8000);
+    }, 16000);
   } else {
-    // Si no hay elemento video, transición a los 3 segundos
-    setTimeout(() => {
+    safetyTimer = setTimeout(() => {
       autoEnterStore();
-    }, 3000);
+    }, 3500);
   }
 
-  // Clic en botón "Iniciar Tienda BDN" o botón de saltar
   if (startBtn) {
-    startBtn.addEventListener('click', () => {
+    startBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       autoEnterStore();
     });
   }
 
-  const skipBtn = document.getElementById('btn-skip-intro');
   if (skipBtn) {
-    skipBtn.addEventListener('click', () => {
+    skipBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       autoEnterStore();
     });
   }
@@ -79,24 +105,39 @@ document.addEventListener('DOMContentLoaded', () => {
   function autoEnterStore() {
     if (hasEnteredStore || !introScreen) return;
     hasEnteredStore = true;
-    try { sessionStorage.setItem('bdn_store_entered', '1'); } catch (e) {}
 
-    // Transición cinematográfica suave
+    if (safetyTimer) {
+      clearTimeout(safetyTimer);
+      safetyTimer = null;
+    }
+
+    // Pausar el video INMEDIATAMENTE al iniciar el fade-out para que el zoom/transición sea a 60 FPS
+    if (introVideo && !introVideo.paused) {
+      try { introVideo.pause(); } catch (e) {}
+    }
+
+    // Restaurar scroll de la página antes de terminar el fade
+    document.body.style.overflow = '';
     introScreen.classList.add('intro-hidden');
 
-    // Pausar video tras la transición para optimizar memoria
+    // Notificar a la tienda que la intro terminó (para cargar mapas diferidos sin trabar el inicio)
+    window.dispatchEvent(new CustomEvent('bdn:intro-finished'));
+
     setTimeout(() => {
-      if (introVideo && !introVideo.paused) {
-        introVideo.pause();
+      if (introScreen) {
+        introScreen.style.display = 'none';
       }
-      // Restaurar overflow limpio del body sin forzar auto (evita romper sticky header)
-      document.body.style.overflow = '';
-      if (introScreen) introScreen.style.display = 'none';
-    }, 850);
+      if (introVideo) {
+        try {
+          introVideo.removeAttribute('src');
+          introVideo.load();
+        } catch (e) {}
+      }
+    }, 750);
   }
 
   /**
-   * Renderizador gráfico Canvas de respaldo (Partículas Neón BDN)
+   * Renderizador gráfico Canvas de respaldo (Se detiene automáticamente cuando el video MP4 está corriendo)
    */
   function initCanvasVisualizer(canvasElement) {
     if (!canvasElement) return;
@@ -104,33 +145,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let width = canvasElement.width = window.innerWidth;
     let height = canvasElement.height = window.innerHeight;
 
-    window.addEventListener('resize', () => {
-      width = canvasElement.width = window.innerWidth;
-      height = canvasElement.height = window.innerHeight;
-    });
-
     const particles = [];
-    const particleCount = 40;
+    const particleCount = 24;
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
         radius: Math.random() * 2 + 1,
-        color: Math.random() > 0.4 ? 'rgba(255, 85, 0, 0.4)' : 'rgba(245, 158, 11, 0.3)'
+        color: Math.random() > 0.4 ? 'rgba(255, 85, 0, 0.35)' : 'rgba(245, 158, 11, 0.25)'
       });
     }
 
     function renderLoop() {
-      if (hasEnteredStore) return;
+      // Si ya entró a la tienda o el video MP4 ya está reproduciéndose, detener el loop del canvas
+      if (hasEnteredStore || isVideoPlaying) return;
       ctx.clearRect(0, 0, width, height);
 
       particles.forEach(p => {
         p.x += p.vx;
         p.y += p.vy;
-
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
@@ -141,23 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = p.color;
         ctx.fill();
       });
-
-      for (let i = 0; i < particleCount; i++) {
-        for (let j = i + 1; j < particleCount; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 110) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(255, 85, 0, ${0.15 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
 
       requestAnimationFrame(renderLoop);
     }
