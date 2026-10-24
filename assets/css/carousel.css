@@ -1,0 +1,286 @@
+/* ==========================================================================
+   HERO CAROUSEL: FONDOS EXPANDIDOS EN CADA SLIDE + FONDO-01.JPG 100% REAL
+   Sin filtros de lavado en los fondos, preservando la imagen nítida original
+   ========================================================================== */
+
+.hero-carousel-section {
+  position: relative;
+  padding: 24px 0 20px 0;
+  overflow: hidden;
+  /* 2. Fondo 100% real sin filtro */
+  background-image: url('../images/fondo-01.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carousel-container {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(10, 25, 49, 0.16);
+  background: #0A1931;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 4 imágenes de fondo expandidas a todo el slide */
+.slide-bicimoto {
+  background-image: linear-gradient(90deg, rgba(10, 25, 49, 0.92) 0%, rgba(10, 25, 49, 0.72) 55%, rgba(10, 25, 49, 0.2) 100%), 
+                    url('../images/slides/slide-bicimoto.jpg');
+}
+
+.slide-mayoreo {
+  background-image: linear-gradient(90deg, rgba(10, 25, 49, 0.92) 0%, rgba(10, 25, 49, 0.72) 55%, rgba(10, 25, 49, 0.2) 100%), 
+                    url('../images/slides/slide-mayoreo.jpg');
+}
+
+.slide-refacciones {
+  background-image: linear-gradient(90deg, rgba(10, 25, 49, 0.92) 0%, rgba(10, 25, 49, 0.72) 55%, rgba(10, 25, 49, 0.2) 100%), 
+                    url('../images/slides/slide-refacciones.jpg');
+}
+
+.slide-bicicletas {
+  background-image: linear-gradient(90deg, rgba(10, 25, 49, 0.92) 0%, rgba(10, 25, 49, 0.72) 55%, rgba(10, 25, 49, 0.2) 100%), 
+                    url('../images/slides/slide-bicicletas.jpg');
+}
+
+/* Contenido del Slide: Texto y botones flotando elegantemente */
+.slide-content-wrapper {
+  padding: 50px 70px;
+  max-width: 760px;
+  position: relative;
+  z-index: 5;
+}
+
+.slide-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.badge-slide-orange {
+  background: var(--accent-orange);
+  color: #FFF;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(255, 85, 0, 0.4);
+}
+
+.badge-slide-yellow {
+  background: var(--accent-yellow);
+  color: #0A1931;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+}
+
+.slide-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 900;
+  color: #FFF;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  letter-spacing: -0.8px;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.slide-title .highlight-orange {
+  color: var(--accent-orange);
+}
+
+.slide-title .highlight-yellow {
+  color: var(--accent-yellow);
+}
+
+.slide-description {
+  color: #E2E8F0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 26px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Specs pills dentro de slides */
+.slide-specs-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.spec-pill {
+  background: rgba(10, 25, 49, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  text-align: center;
+  color: #FFF;
+}
+
+.spec-pill .spec-val {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--accent-yellow);
+}
+
+.spec-pill .spec-lbl {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.slide-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-slide-primary {
+  background: var(--accent-orange);
+  color: #FFF;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 15px 30px;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(255, 85, 0, 0.5);
+  transition: var(--transition-fast);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-slide-primary:hover {
+  background: var(--accent-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255, 85, 0, 0.7);
+}
+
+.btn-slide-secondary {
+  background: rgba(10, 25, 49, 0.75);
+  color: #FFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 26px;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn-slide-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #FFF;
+}
+
+/* Controles de Navegación */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(10, 25, 49, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.carousel-btn:hover {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+  left: 20px;
+}
+
+.carousel-next {
+  right: 20px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  background: rgba(10, 25, 49, 0.6);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  width: 32px;
+  background: var(--accent-orange);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slide-content-wrapper {
+    padding: 40px 24px;
+  }
+  .slide-title {
+    font-size: 2.1rem;
+  }
+  .carousel-btn {
+    display: none;
+  }
+}

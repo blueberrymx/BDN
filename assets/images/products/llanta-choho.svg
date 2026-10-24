@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="tireGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="65%" stop-color="#1E293B"/>
+      <stop offset="90%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <filter id="tireShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="8" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" rx="24" fill="#F8FAFC"/>
+
+  <g transform="translate(200, 200)" filter="url(#tireShadow)">
+    <!-- Outer Tire -->
+    <circle r="150" fill="url(#tireGrad)"/>
+    <!-- Tire Grooves / Treads (Patrón de grabado) -->
+    <g stroke="#334155" stroke-width="4" stroke-linecap="round">
+      <path d="M-80,-115 L-50,-125 M-10,-135 L20,-135 M60,-125 L90,-115"/>
+      <path d="M-115,-80 L-125,-50 M-135,-10 L-135,20 M-125,60 L-115,90"/>
+      <path d="M-80,115 L-50,125 M-10,135 L20,135 M60,125 L90,115"/>
+      <path d="M115,-80 L125,-50 M135,-10 L135,20 M125,60 L115,90"/>
+    </g>
+    <!-- Inner Rim opening -->
+    <circle r="85" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="3"/>
+    
+    <!-- Branding on sidewall -->
+    <path id="textPathTire" d="M -110 0 A 110 110 0 0 1 110 0" fill="none"/>
+    <text font-family="'Outfit', sans-serif" font-weight="900" font-size="14" fill="#FF5500" letter-spacing="3">
+      <textPath href="#textPathTire" startOffset="50%" text-anchor="middle">CHOHO 2.75-18 TT 6PR</textPath>
+    </text>
+
+    <!-- Center Rim detail -->
+    <circle r="25" fill="#94A3B8"/>
+    <circle r="15" fill="#64748B"/>
+  </g>
+</svg>

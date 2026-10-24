@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="tubeGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#1E293B"/>
+      <stop offset="90%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="valveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="50%" stop-color="#EAB308"/>
+      <stop offset="100%" stop-color="#A16207"/>
+    </linearGradient>
+    <filter id="tubeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="8" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" rx="24" fill="#F8FAFC"/>
+
+  <g transform="translate(200, 200)" filter="url(#tubeShadow)">
+    <!-- Inner Tube Torus (Cámara de bicicleta) -->
+    <circle r="140" fill="none" stroke="url(#tubeGrad)" stroke-width="50"/>
+    
+    <!-- Highlights on black rubber -->
+    <circle r="150" fill="none" stroke="#475569" stroke-width="3" opacity="0.4"/>
+
+    <!-- Valve Stem (Válvula dorada con tapón) -->
+    <g transform="translate(0, -115)">
+      <rect x="-5" y="-35" width="10" height="35" rx="2" fill="url(#valveGrad)"/>
+      <rect x="-6" y="-38" width="12" height="12" rx="2" fill="#000000"/>
+    </g>
+
+    <!-- Center Label Info -->
+    <circle r="80" fill="#0A1931"/>
+    <text y="-15" font-family="'Outfit', sans-serif" font-weight="900" font-size="16" fill="#FF5500" text-anchor="middle" letter-spacing="1">GORILA</text>
+    <text y="10" font-family="'Outfit', sans-serif" font-weight="800" font-size="18" fill="#FFFFFF" text-anchor="middle">R29 x 2.125</text>
+    <text y="30" font-family="'Inter', sans-serif" font-weight="700" font-size="9" fill="#94A3B8" text-anchor="middle">VÁLVULA AMERICANA</text>
+    <text y="48" font-family="'Inter', sans-serif" font-weight="600" font-size="8" fill="#FDE047" text-anchor="middle">100% BUTILO</text>
+  </g>
+</svg>

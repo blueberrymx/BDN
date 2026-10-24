@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="padMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="frictionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+    <filter id="padShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="6" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" rx="24" fill="#F8FAFC"/>
+
+  <g transform="translate(60, 80)" filter="url(#padShadow)">
+    <!-- Backing Plate (Placa metálica) -->
+    <path d="M20,60 Q140,20 260,60 L270,140 Q140,170 10,140 Z" fill="url(#padMetal)" stroke="#64748B" stroke-width="2"/>
+    <!-- Mounting Holes -->
+    <circle cx="45" cy="80" r="10" fill="#F8FAFC"/>
+    <circle cx="235" cy="80" r="10" fill="#F8FAFC"/>
+
+    <!-- Friction Material (Pasta semimetálica) -->
+    <path d="M50,85 Q140,65 230,85 L225,135 Q140,150 55,135 Z" fill="url(#frictionGrad)"/>
+    <!-- Heat Slots (Ranura disipadora) -->
+    <rect x="135" y="80" width="8" height="60" rx="3" fill="#0A1931"/>
+
+    <!-- Branding Text -->
+    <text x="140" y="200" font-family="'Outfit', sans-serif" font-weight="900" font-size="16" fill="#0A1931" text-anchor="middle">VITAL BRAKE PADS</text>
+    <text x="140" y="220" font-family="'Inter', sans-serif" font-weight="700" font-size="11" fill="#FF5500" text-anchor="middle">SEMIMETÁLICAS • ALTO RENDIMIENTO</text>
+  </g>
+</svg>

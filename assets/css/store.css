@@ -1,0 +1,1085 @@
+/* ==========================================================================
+   1. BANNER LOGÍSTICO DUAL (EN PARALLAX FONDO-01.JPG SIN CUADRO BLANCO DE FONDO)
+   ========================================================================== */
+.shipping-section-parallax {
+  background-image: url('../images/fondo-01.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px 0 25px 0;
+}
+
+.shipping-dual-banner {
+  background: linear-gradient(135deg, #0A1931 0%, #152C53 100%);
+  border-radius: var(--radius-lg);
+  padding: 32px 38px;
+  color: #FFF;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(10, 25, 49, 0.15);
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shipping-column {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.shipping-column:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  padding-right: 30px;
+}
+
+.shipping-header-flex {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.shipping-column-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-orange);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(255, 85, 0, 0.4);
+}
+
+.shipping-column-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: #FFFFFF;
+}
+
+.shipping-column h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #FFF;
+}
+
+.shipping-column p {
+  color: #CBD5E1;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   2. FONDOS 100% REALES SIN FILTROS (FONDO-01.JPG Y FONDO-02.JPG)
+   ========================================================================== */
+#catalogo-section.parallax-catalog,
+#sucursales-section.parallax-branches {
+  background-image: url('../images/fondo-01.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.brands-section-wrapper {
+  position: relative;
+  background-image: url('../images/fondo-02.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 85px 0;
+  overflow: hidden;
+  border-top: 3px solid var(--accent-orange);
+  border-bottom: 3px solid var(--accent-orange);
+}
+
+.brands-container-inner {
+  position: relative;
+  z-index: 5;
+}
+
+/* 3. Encabezado de marcas SIN cuadro azul de fondo */
+.brands-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 50px auto;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.brands-header .section-subtitle {
+  justify-content: center;
+  color: var(--accent-yellow);
+}
+
+.brands-header .section-title {
+  color: #FFF;
+}
+
+.brands-header p {
+  color: #E2E8F0;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+.brands-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.brand-card-item {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 75px;
+  width: 100%;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.brand-card-item:hover {
+  transform: translateY(-5px) scale(1.08);
+}
+
+.brand-logo-img-floating {
+  max-width: 145px;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.brand-card-item:hover .brand-logo-img-floating {
+  filter: drop-shadow(0 6px 18px rgba(255, 85, 0, 0.7)) brightness(1.2);
+}
+
+/* ==========================================================================
+   CATÁLOGO DE PRODUCTOS & CARDS
+   ========================================================================== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background: #FFFFFF;
+  border: 1px solid var(--gray-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: #CBD5E1;
+}
+
+.product-badge-container {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 5;
+}
+
+.product-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.badge-mayoreo {
+  background: var(--accent-orange);
+  color: #FFF;
+}
+
+.badge-fast-ship {
+  background: var(--text-dark-blue);
+  color: #FFF;
+}
+
+.product-thumb-box {
+  background: #F8FAFC;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  min-height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--gray-border);
+  overflow: hidden;
+}
+
+.product-thumb-box img {
+  max-height: 170px;
+  max-width: 90%;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.product-card:hover .product-thumb-box img {
+  transform: scale(1.06);
+}
+
+.product-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.product-brand {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+}
+
+.product-sku {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.product-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark-blue);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.product-compatibility {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Indicador de Disponibilidad Multi-Sucursal (AutoZone) */
+.autozone-stock-preview {
+  background: #F1F5F9;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  border: 1px dashed #CBD5E1;
+  transition: var(--transition-fast);
+}
+
+.autozone-stock-preview:hover {
+  background: #E2E8F0;
+  border-color: var(--text-dark-blue);
+}
+
+.stock-status-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.stock-status-green {
+  color: var(--success-green);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stock-status-green::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--success-green);
+  border-radius: 50%;
+}
+
+.stock-view-all-link {
+  color: var(--accent-orange);
+  font-size: 0.74rem;
+}
+
+/* Pricing Section */
+.product-price-section {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--gray-border);
+}
+
+.price-main-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.current-price {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-dark-blue);
+}
+
+.wholesale-price-notice {
+  font-size: 0.78rem;
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.product-action-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-add-cart {
+  background: var(--accent-orange);
+  color: #FFF;
+  border: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.btn-add-cart:hover {
+  background: var(--accent-orange-hover);
+}
+
+.btn-check-branches {
+  background: var(--bg-subtle);
+  border: 1px solid var(--gray-border);
+  color: var(--text-dark-blue);
+  border-radius: var(--radius-md);
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-check-branches:hover {
+  background: var(--text-dark-blue);
+  color: #FFF;
+}
+
+/* ==========================================================================
+   3. FICHAS DE SUCURSAL CON EMBED DE GOOGLE MAPS DETRÁS / ARRIBA
+   Cuadro del mismo ancho que la ficha, con efecto asomándose por detrás
+   ========================================================================== */
+.branches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 40px 24px;
+  margin-top: 30px;
+}
+
+.branch-card-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.branch-card-container:hover {
+  transform: translateY(-6px);
+}
+
+/* 3. Cuadro del Embed de Google Maps (Detrás / Arriba) */
+.branch-map-embed-box {
+  width: 100%;
+  height: 200px;
+  background: #E2E8F0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--accent-orange);
+  border-bottom: none;
+  box-shadow: 0 8px 20px rgba(10, 25, 49, 0.12);
+  transition: height 0.3s ease;
+}
+
+.branch-map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Badge flotante en el mapa */
+.map-overlay-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(10, 25, 49, 0.85);
+  color: #FFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 3. Ficha de Información Blanca (Al frente, pegada y solapada) */
+.branch-info-front-card {
+  position: relative;
+  z-index: 2;
+  background: #FFFFFF;
+  border: 1px solid var(--gray-border);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-lg) var(--radius-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(10, 25, 49, 0.1);
+  margin-top: -20px; /* Efecto de que el mapa está detrás del cuadro blanco */
+  min-height: 250px;
+  transition: border-color var(--transition-fast);
+}
+
+.branch-card-container:hover .branch-info-front-card {
+  border-color: var(--accent-orange);
+  box-shadow: 0 16px 36px rgba(10, 25, 49, 0.15);
+}
+
+.branch-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.branch-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-dark-blue);
+}
+
+.branch-address {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  line-height: 1.4;
+  display: flex;
+  gap: 8px;
+}
+
+.branch-address svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--accent-orange);
+}
+
+.branch-status-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 0.78rem;
+  color: #15803D;
+  font-weight: 700;
+}
+
+.branch-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn-branch-wa {
+  background: #25D366;
+  color: #FFF;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.btn-branch-wa:hover {
+  background: #1EBE5B;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+}
+
+.btn-branch-map {
+  background: var(--bg-subtle);
+  border: 1px solid var(--gray-border);
+  color: var(--text-dark-blue);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.btn-branch-map:hover {
+  background: var(--text-dark-blue);
+  color: #FFF;
+}
+
+/* ==========================================================================
+   1. SECCIÓN DE MI CUENTA / REGISTRO PROFESIONAL (ESTILO MERCADO LIBRE B2C/B2B)
+   ========================================================================== */
+.account-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10, 25, 49, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 10006;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 20px;
+}
+
+.account-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.account-modal-box {
+  background: #FFF;
+  border-radius: var(--radius-lg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  padding: 32px;
+  position: relative;
+}
+
+.account-tabs-nav {
+  display: flex;
+  border-bottom: 2px solid var(--gray-border);
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.account-tab-btn {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition-fast);
+  text-align: center;
+}
+
+.account-tab-btn.active {
+  color: var(--accent-orange);
+}
+
+.account-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0; width: 100%; height: 3px;
+  background: var(--accent-orange);
+}
+
+/* Selector B2C vs B2B Taller */
+.account-type-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.account-type-card {
+  border: 2px solid var(--gray-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.account-type-card.selected {
+  border-color: var(--accent-orange);
+  background: #FFF7ED;
+}
+
+.account-type-card .type-icon {
+  font-size: 1.6rem;
+}
+
+.account-type-card h5 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-dark-blue);
+  margin-bottom: 2px;
+}
+
+.account-type-card p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.25;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-dark-blue);
+}
+
+.form-control {
+  border: 1px solid var(--gray-border);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-size: 0.88rem;
+  outline: none;
+  background: #FFF;
+  color: var(--text-dark-blue);
+}
+
+.form-control:focus {
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 0 3px var(--accent-orange-glow);
+}
+
+.btn-account-submit {
+  background: var(--accent-orange);
+  color: #FFF;
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: var(--transition-fast);
+}
+
+.btn-account-submit:hover {
+  background: var(--accent-orange-hover);
+  box-shadow: 0 6px 20px rgba(255, 85, 0, 0.4);
+}
+
+/* Panel de Perfil Activo */
+.user-profile-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.user-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.user-avatar-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-orange);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.btn-logout {
+  background: #FEE2E2;
+  color: #B91C1C;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.btn-logout:hover {
+  background: #FECACA;
+}
+
+/* ==========================================================================
+   DRAWER LATERAL DEL CARRITO & MODAL AUTOZONE
+   ========================================================================== */
+.cart-drawer-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10, 25, 49, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 10001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.cart-drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0; right: -480px; width: 100%; max-width: 460px; height: 100vh;
+  background: #FFF;
+  z-index: 10002;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-drawer-backdrop.active .cart-drawer {
+  right: 0;
+}
+
+.cart-drawer-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--gray-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-drawer-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark-blue);
+}
+
+.cart-items-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.cart-item-row {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: var(--bg-subtle);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+}
+
+.cart-item-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark-blue);
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.cart-item-price {
+  font-size: 0.85rem;
+  color: var(--accent-orange);
+  font-weight: 800;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--gray-border);
+  background: var(--bg-subtle);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.cart-item-qty {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.btn-remove-item {
+  color: #EF4444;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.cart-drawer-footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--gray-border);
+  background: #F8FAFC;
+}
+
+.cart-summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+  color: var(--text-charcoal);
+}
+
+.cart-summary-total {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-dark-blue);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--gray-border);
+}
+
+.btn-checkout-ml {
+  background: var(--accent-orange);
+  color: #FFF;
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-checkout-ml:hover {
+  background: var(--accent-orange-hover);
+  box-shadow: 0 4px 15px rgba(255, 85, 0, 0.4);
+}
+
+/* Modal AutoZone de Existencias */
+.autozone-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10, 25, 49, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+  padding: 20px;
+}
+
+.autozone-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.autozone-modal-box {
+  background: #FFF;
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  padding: 28px;
+  position: relative;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--bg-subtle);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-charcoal);
+}
+
+.modal-product-summary {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-border);
+  margin-bottom: 20px;
+}
+
+.modal-product-summary img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  background: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  padding: 6px;
+}
+
+.branch-stock-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-border);
+  margin-bottom: 10px;
+}
+
+.stock-badge-pill {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.stock-badge-available {
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.stock-badge-low {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.stock-badge-out {
+  background: #FEE2E2;
+  color: #B91C1C;
+}
+
+@media (max-width: 768px) {
+  .shipping-dual-banner {
+    grid-template-columns: 1fr;
+  }
+  .shipping-column:first-child {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+  .account-type-selector {
+    grid-template-columns: 1fr;
+  }
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
