@@ -97,17 +97,17 @@ const DEFAULT_PRODUCTS_DATA = [
   {
     id: 'PROD-001',
     sku: 'AL-E01-PRO',
-    name: 'Bicimoto Eléctrica Alessia E01 PRO 500W 48V - Light Urban',
+    name: 'Bicimoto Eléctrica Alessia E01 PRO 500W 48V (Casco de Regalo 🎁)',
     brand: 'ALESSIA',
     category: 'bicimotos',
     vehicleType: 'moto',
     compatibility: 'Movilidad Eléctrica Urbana Sin Placas (Autonomía 45 km • 35 km/h)',
-    priceRetail: 11490,
-    priceWholesale: 10341,
+    priceRetail: 7500,
+    priceWholesale: 6750,
     unit: 'pza',
     image: 'assets/images/products/bicimoto-alessia-real.jpg',
-    badge: 'ALTO MARGEN • E-BIKE',
-    promoInfo: 'Incluye cargador inteligente 48V, canastilla y respaldo doble',
+    badge: '🎁 CASCO DE REGALO • E-BIKE',
+    promoInfo: 'Incluye cargador inteligente 48V, canastilla, respaldo doble y Casco Certificado de Regalo',
     specs: [
       { label: 'Motor Eléctrico', val: '500W Brushless (750W Pico) libre de mantenimiento' },
       { label: 'Batería y Autonomía', val: '48V 12Ah Ciclo Profundo • Hasta 45 km por carga' },
@@ -470,6 +470,12 @@ let PRODUCTS_DATA = (() => {
 
 // Garantizar que la tarifa de mayoreo sea exactamente el 10% de descuento sobre el precio publicado
 PRODUCTS_DATA.forEach(p => {
+  if (p.id === 'PROD-001') {
+    p.priceRetail = 7500;
+    p.name = 'Bicimoto Eléctrica Alessia E01 PRO 500W 48V (Casco de Regalo 🎁)';
+    p.badge = '🎁 CASCO DE REGALO • E-BIKE';
+    p.promoInfo = 'Incluye cargador inteligente 48V, canastilla, respaldo doble y Casco Certificado de Regalo';
+  }
   p.priceWholesale = Math.round(p.priceRetail * 0.90);
 });
 DEFAULT_PRODUCTS_DATA.forEach(p => {
