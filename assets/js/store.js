@@ -103,7 +103,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Movilidad Eléctrica Urbana Sin Placas (Autonomía 45 km • 35 km/h)',
     priceRetail: 11490,
-    priceWholesale: 9850,
+    priceWholesale: 10341,
     unit: 'pza',
     image: 'assets/images/products/bicimoto-alessia-real.jpg',
     badge: 'ALTO MARGEN • E-BIKE',
@@ -133,7 +133,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Italika FT125, FT150, DT150, Honda CGL125 Tool, Vento Workman',
     priceRetail: 540,
-    priceWholesale: 425,
+    priceWholesale: 486,
     unit: 'pza',
     image: 'assets/images/products/llanta-choho-real.jpg',
     badge: 'TOP VENTAS TALLER',
@@ -163,7 +163,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Italika FT150, DM200, FT200, Honda Cargo 150, Vento, Bajaj',
     priceRetail: 65,
-    priceWholesale: 44,
+    priceWholesale: 59,
     unit: 'pza',
     image: 'assets/images/products/bujia-ngk-real.jpg',
     badge: 'ORIGINAL JAPÓN',
@@ -193,7 +193,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Motos de trabajo y doble propósito 125cc a 200cc (Italika, Honda, Vento)',
     priceRetail: 265,
-    priceWholesale: 198,
+    priceWholesale: 239,
     unit: 'pza',
     image: 'assets/images/products/cadena-kmc-real.jpg',
     badge: 'ESLABÓN REFORZADO H',
@@ -223,7 +223,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Motores 4 Tiempos de Motos de Trabajo, Reparto y Scooters',
     priceRetail: 135,
-    priceWholesale: 99,
+    priceWholesale: 122,
     unit: 'botella',
     image: 'assets/images/products/aceite-akron-real.jpg',
     badge: 'PROTECCIÓN TÉRMICA',
@@ -253,7 +253,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'bici',
     compatibility: 'Ciclismo MTB Cross Country y Urbano • Talla M/L (1.65m a 1.85m)',
     priceRetail: 4850,
-    priceWholesale: 3990,
+    priceWholesale: 4365,
     unit: 'pza',
     image: 'assets/images/products/bici-windsor-r29-real.jpg',
     badge: 'CUADRO ALUMINIO 6061',
@@ -283,7 +283,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Italika FT125, FT150, 150Z, DM200, Honda CGL125, Vento',
     priceRetail: 95,
-    priceWholesale: 66,
+    priceWholesale: 86,
     unit: 'juego',
     image: 'assets/images/products/balatas-vital-real.jpg',
     badge: 'FRENADO SIN RUIDO',
@@ -313,7 +313,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'bici',
     compatibility: 'Bicicletas de Montaña MTB Rodada 29 (Ancho 1.95" a 2.35")',
     priceRetail: 88,
-    priceWholesale: 59,
+    priceWholesale: 79,
     unit: 'pza',
     image: 'assets/images/products/camara-gorila-real.jpg',
     badge: 'BUTILO ALTO ESPESOR',
@@ -343,7 +343,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'bici',
     compatibility: 'Transporte Urbano Diario, Paseo y Mandados • Rodada 26',
     priceRetail: 3190,
-    priceWholesale: 2590,
+    priceWholesale: 2871,
     unit: 'pza',
     image: 'assets/images/products/bici-altrego-r26-real.jpg',
     badge: 'URBANA EQUIPADA',
@@ -373,7 +373,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Motos 4T de Calle, Trabajo y Doble Propósito (JASO MA2 Certificado)',
     priceRetail: 195,
-    priceWholesale: 152,
+    priceWholesale: 176,
     unit: 'litro',
     image: 'assets/images/products/aceite-motul-real.jpg',
     badge: 'FÓRMULA JASO MA2',
@@ -403,7 +403,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Seguridad Vial Certificada FMVSS 218 DOT • Tallas M / L / XL',
     priceRetail: 980,
-    priceWholesale: 740,
+    priceWholesale: 882,
     unit: 'pza',
     image: 'assets/images/products/casco-dot-real.jpg',
     badge: 'CERTIFICADO DOT',
@@ -433,7 +433,7 @@ const DEFAULT_PRODUCTS_DATA = [
     vehicleType: 'moto',
     compatibility: 'Italika FT150, FT150TS, DT150 Sport, Kurazai Delivery 150',
     priceRetail: 440,
-    priceWholesale: 335,
+    priceWholesale: 396,
     unit: 'kit',
     image: 'assets/images/products/kit-arrastre-real.jpg',
     badge: 'KIT COMPLETO 3 EN 1',
@@ -467,6 +467,14 @@ let PRODUCTS_DATA = (() => {
   } catch (e) {}
   return JSON.parse(JSON.stringify(DEFAULT_PRODUCTS_DATA));
 })();
+
+// Garantizar que la tarifa de mayoreo sea exactamente el 10% de descuento sobre el precio publicado
+PRODUCTS_DATA.forEach(p => {
+  p.priceWholesale = Math.round(p.priceRetail * 0.90);
+});
+DEFAULT_PRODUCTS_DATA.forEach(p => {
+  p.priceWholesale = Math.round(p.priceRetail * 0.90);
+});
 
 window.PRODUCTS_DATA = PRODUCTS_DATA;
 window.DEFAULT_PRODUCTS_DATA = DEFAULT_PRODUCTS_DATA;
@@ -574,14 +582,14 @@ function renderProducts(filteredProducts = PRODUCTS_DATA) {
     const card = document.createElement('div');
     card.classList.add('product-card');
 
-    const currentPrice = isWholesaleMode ? prod.priceWholesale : prod.priceRetail;
-    const saving = prod.priceRetail - prod.priceWholesale;
+    // Garantizar cálculo de precio de mayoreo con 10% de descuento exacto sobre precio publicado
+    const wholesalePrice = Math.round(prod.priceRetail * 0.90);
+    const currentPrice = isWholesaleMode ? wholesalePrice : prod.priceRetail;
+    const saving = prod.priceRetail - wholesalePrice;
 
-    let branchesInStock = 0;
     let totalStockUnits = 0;
     for (const bId in prod.stockPerBranch) {
       if (prod.stockPerBranch[bId] > 0) {
-        branchesInStock++;
         totalStockUnits += prod.stockPerBranch[bId];
       }
     }
@@ -590,13 +598,11 @@ function renderProducts(filteredProducts = PRODUCTS_DATA) {
 
     card.innerHTML = `
       <div class="product-badge-container">
-        <span class="product-badge badge-mayoreo">${isWholesaleMode ? 'PRECIO MAYOREO (+6 PZAS)' : prod.badge}</span>
-        <span class="product-badge badge-fast-ship">ENVÍO SLP & MÉXICO</span>
+        ${isWholesaleMode ? '<span class="product-badge badge-mayoreo">10% OFF MAYOREO (+6 PZAS)</span>' : (prod.badge ? `<span class="product-badge badge-mayoreo">${prod.badge}</span>` : '')}
       </div>
 
       <div class="product-thumb-box" onclick="openProductSpecModal('${prod.id}')" title="Ver Ficha Técnica Oficial y Compatibilidad Mecánica">
         <img src="${prod.image}" alt="${prod.name}" loading="lazy">
-        <span class="product-spec-hover-pill">📋 Ficha Técnica & Compatibilidad</span>
       </div>
 
       <div class="product-body">
@@ -608,38 +614,25 @@ function renderProducts(filteredProducts = PRODUCTS_DATA) {
         <h3 class="product-title" onclick="openProductSpecModal('${prod.id}')" style="cursor:pointer;" title="Clic para abrir Ficha Técnica">${prod.name}</h3>
         <p class="product-compatibility">⚙️ ${prod.compatibility}</p>
 
-        <!-- Indicador Multi-Sucursal AutoZone -->
-        <div class="autozone-stock-preview" onclick="openBranchStockModal('${prod.id}')" title="Clic para consultar existencias en las 8 sucursales">
-          <div class="stock-status-line">
-            <span class="stock-status-green" style="${isOut ? 'color:#B91C1C;' : ''}">
-              ${isOut ? 'Agotado temporalmente' : `Disponible en ${branchesInStock} de 8 sucursales`}
-            </span>
-            <span class="stock-view-all-link">Ver tiendas ➔</span>
-          </div>
-          <div style="font-size: 0.72rem; color: #64748B; margin-top: 3px;">
-            ${totalStockUnits} piezas en piso SLP • Pick-up 30 min o Flotilla Express
-          </div>
+        <!-- Enlace Limpio Ver Tiendas (Sin cuadro gris) -->
+        <div class="product-view-stores-link" onclick="openBranchStockModal('${prod.id}')" title="Consultar existencias en las 8 sucursales de SLP">
+          <span>Ver tiendas ➔</span>
         </div>
 
         <div class="product-price-section">
           <div class="price-main-row">
             <span class="current-price">$${currentPrice.toLocaleString('es-MX')} MXN</span>
-            ${isWholesaleMode ? `<span style="font-size: 0.75rem; color: #15803D; font-weight: 700;">Ahorras $${saving.toLocaleString('es-MX')} x pza</span>` : ''}
+            ${isWholesaleMode ? `<span class="wholesale-tag-badge">10% OFF MAYOREO</span>` : ''}
           </div>
-          <div class="wholesale-price-notice">
-            ${isWholesaleMode ? `📦 Tarifa Mayoreo activada (Lote mín. 6 pzas)` : `Precio Mayoreo Taller: $${prod.priceWholesale.toLocaleString('es-MX')} (desde 6 pzas)`}
-          </div>
+          ${isWholesaleMode ? `<div class="wholesale-price-notice" style="color: #15803D; font-size: 0.72rem; font-weight: 700; margin-top: 2px;">📦 Tarifa Mayoreo: 10% desc. en lote mín. 6 pzas</div>` : ''}
         </div>
 
-        <div class="product-action-row" style="grid-template-columns: 1fr auto auto;">
+        <div class="product-action-row">
           <button class="btn-add-cart" onclick="addToCart('${prod.id}')" ${isOut ? 'disabled style="background:#94A3B8;cursor:not-allowed;"' : ''}>
-            🛒 ${isOut ? 'Sin Stock' : (isWholesaleMode ? 'Agregar 6 pzas' : 'Agregar al Carrito')}
+            🛒 ${isOut ? 'Sin Stock' : (isWholesaleMode ? 'Agregar (+6 pzas)' : 'Agregar al Carrito')}
           </button>
-          <button class="btn-check-branches" onclick="openProductSpecModal('${prod.id}')" title="Ver Ficha Técnica y Compatibilidad Mecánica">
+          <button class="btn-check-branches desktop-only-btn" onclick="openProductSpecModal('${prod.id}')" title="Ver Ficha Técnica y Compatibilidad Mecánica">
             📋
-          </button>
-          <button class="btn-check-branches" onclick="openBranchStockModal('${prod.id}')" title="Ver disponibilidad en las 8 sucursales">
-            📍
           </button>
         </div>
       </div>
@@ -1365,10 +1358,12 @@ function updateUserButtonUI() {
 
   if (currentUser) {
     const isTaller = currentUser.accountType === 'taller';
-    btn.innerHTML = `<span>${isTaller ? '🛠️' : '👤'} ${currentUser.name.split(' ')[0]}</span>`;
+    const icon = isTaller ? '🛠️' : '👤';
+    const name = currentUser.name.split(' ')[0];
+    btn.innerHTML = `<span class="btn-icon">${icon}</span><span class="btn-text"> ${name}</span>`;
     btn.style.borderColor = 'var(--accent-orange)';
   } else {
-    btn.innerHTML = `<span>👤 Mi Cuenta</span>`;
+    btn.innerHTML = `<span class="btn-icon">👤</span><span class="btn-text"> Mi Cuenta</span>`;
     btn.style.borderColor = 'var(--gray-border)';
   }
 }
@@ -2113,11 +2108,11 @@ window.openProductSpecModal = function(productId) {
 
         <div class="spec-wholesale-calc-box" style="text-align:left;">
           <div style="font-size:0.74rem;font-weight:800;color:#9A3412;text-transform:uppercase;margin-bottom:4px;">
-            🛠️ Rentabilidad para Taller / Mayorista:
+            🛠️ Tarifa de Mayoreo (Talleres y Refaccionarias):
           </div>
           <div style="font-size:0.8rem;color:#431407;line-height:1.45;">
-            • Ganancia / Ahorro por unidad: <strong>$${unitSaving.toLocaleString('es-MX')} MXN (${marginPct}%)</strong><br>
-            • Ahorro por lote de 6 pzas: <strong style="color:#15803D;">$${lot6Saving.toLocaleString('es-MX')} MXN</strong>
+            • Descuento: <strong>10% directo sobre precio publicado</strong> (desde 6 piezas).<br>
+            • Ahorro en lote de 6 pzas: <strong style="color:#15803D;">$${lot6Saving.toLocaleString('es-MX')} MXN</strong> ($${unitSaving.toLocaleString('es-MX')} MXN x pza)
           </div>
         </div>
 
@@ -2341,6 +2336,8 @@ function setupModalHandlers() {
       window.closePspCheckoutModal?.();
       window.closeAccountModal?.();
       window.closeCartDrawer?.();
+      window.closeVehicleModal?.();
+      window.closeMobileMenu?.();
     }
   });
 
@@ -2355,8 +2352,10 @@ function setupModalHandlers() {
       { backdrop: document.getElementById('branch-stock-modal'), boxSelector: '.autozone-modal-box' },
       { backdrop: document.getElementById('account-modal-backdrop'), boxSelector: '.account-modal-box' },
       { backdrop: document.getElementById('cart-drawer-backdrop'), boxSelector: '.cart-items-container' },
+      { backdrop: document.getElementById('vehicle-modal-backdrop'), boxSelector: '.vehicle-modal-box' },
+      { backdrop: document.getElementById('mobile-menu-backdrop'), boxSelector: '.mobile-menu-panel' },
       { backdrop: document.getElementById('bdn-agent-sync-modal'), boxSelector: '#bdn-live-editor-list, .spec-modal-box' }
-    ].find(entry => entry.backdrop && entry.backdrop.classList.contains('active'));
+    ].find(entry => entry.backdrop && (entry.backdrop.classList.contains('active') || entry.backdrop.classList.contains('open')));
 
     if (!activeModalEntry) return;
 
@@ -2392,26 +2391,196 @@ function setupVehicleSelector() {
   const vehicleTypeSelect = document.getElementById('vehicle-type-select');
   const brandSelect = document.getElementById('vehicle-brand-select');
 
+  // Inicializar o restaurar vehículo guardado previamente
+  restoreSavedVehicle();
+
   if (btnFilter && vehicleTypeSelect) {
     btnFilter.addEventListener('click', () => {
       const type = vehicleTypeSelect.value;
       const brand = brandSelect ? brandSelect.value : '';
-
-      const filtered = PRODUCTS_DATA.filter(p => {
-        const matchesType = (type === 'all') || (normalizeText(p.vehicleType) === normalizeText(type));
-        const fitmentText = normalizeText(`${p.brand} ${p.name} ${p.compatibility} ${(p.fitmentModels || []).join(' ')}`);
-        const matchesBrand = (brand === 'all' || brand === '') || fitmentText.includes(normalizeText(brand));
-        return matchesType && matchesBrand;
-      });
-
-      renderProducts(filtered);
-      requestAnimationFrame(() => {
-        scrollToSection('#catalogo-section', 950);
-      });
-      showToast(`Mostrando ${filtered.length} productos compatibles`);
+      applyVehicleFilterLogic(type, brand, true);
     });
   }
 }
+
+/**
+ * Lógica unificada de filtrado y persistencia de vehículo (Escritorio + Ficha Emergente Móvil)
+ */
+function applyVehicleFilterLogic(type, brand, scrollToCatalog = true) {
+  // Sincronizar selectores de escritorio
+  const desktopType = document.getElementById('vehicle-type-select');
+  const desktopBrand = document.getElementById('vehicle-brand-select');
+  if (desktopType && desktopType.value !== type) desktopType.value = type;
+  if (desktopBrand && desktopBrand.value !== brand) desktopBrand.value = brand;
+
+  // Sincronizar selectores de la ficha emergente móvil
+  const modalType = document.getElementById('modal-vehicle-type-select');
+  const modalBrand = document.getElementById('modal-vehicle-brand-select');
+  if (modalType && modalType.value !== type) modalType.value = type;
+  if (modalBrand && modalBrand.value !== brand) modalBrand.value = brand;
+
+  const isAll = (type === 'all' || !type) && (brand === 'all' || !brand);
+
+  if (isAll) {
+    localStorage.removeItem('bdn_saved_vehicle');
+    updateVehicleMobileUI(null);
+    renderProducts();
+    if (scrollToCatalog) {
+      showToast('Mostrando todo el catálogo de refacciones');
+    }
+    return;
+  }
+
+  // Generar etiqueta descriptiva
+  const brandNames = {
+    italika: 'Italika', windsor: 'Windsor', vento: 'Vento',
+    honda: 'Honda', bajaj: 'Bajaj', alessia: 'Alessia'
+  };
+  const typeNames = {
+    moto: 'Moto', bici: 'Bici'
+  };
+
+  const brandLabel = brandNames[brand] || (brand !== 'all' ? brand : '');
+  const typeLabel = typeNames[type] || '';
+  let label = '';
+  if (brandLabel && typeLabel) label = `${brandLabel} (${typeLabel})`;
+  else if (brandLabel) label = brandLabel;
+  else if (typeLabel) label = typeLabel;
+  else label = 'Vehículo Seleccionado';
+
+  const savedData = { type, brand, label };
+  localStorage.setItem('bdn_saved_vehicle', JSON.stringify(savedData));
+  updateVehicleMobileUI(savedData);
+
+  const filtered = PRODUCTS_DATA.filter(p => {
+    const matchesType = (type === 'all' || !type) || (normalizeText(p.vehicleType) === normalizeText(type));
+    const fitmentText = normalizeText(`${p.brand} ${p.name} ${p.compatibility} ${(p.fitmentModels || []).join(' ')}`);
+    const matchesBrand = (brand === 'all' || brand === '' || !brand) || fitmentText.includes(normalizeText(brand));
+    return matchesType && matchesBrand;
+  });
+
+  renderProducts(filtered);
+
+  if (scrollToCatalog) {
+    requestAnimationFrame(() => {
+      scrollToSection('#catalogo-section', 950);
+    });
+    showToast(`✓ Filtro: ${label} (${filtered.length} productos)`);
+  }
+}
+
+function updateVehicleMobileUI(savedData) {
+  const trigger = document.getElementById('vehicle-mobile-trigger');
+  const labelEl = document.getElementById('vehicle-selected-label');
+  const subEl = document.getElementById('vehicle-mobile-sub-text');
+  const actionTag = document.getElementById('vehicle-mobile-action-tag');
+  const activePill = document.getElementById('vehicle-current-active-pill');
+  const activeSummary = document.getElementById('vehicle-active-summary');
+  const clearBtn = document.getElementById('btn-vehicle-modal-clear');
+
+  if (savedData && savedData.label) {
+    if (labelEl) labelEl.textContent = savedData.label;
+    if (subEl) subEl.textContent = 'Filtro guardado • Toca para cambiar o quitar';
+    if (actionTag) actionTag.innerHTML = '<span>Cambiar ▾</span>';
+    if (trigger) trigger.classList.add('has-active-vehicle');
+    if (activePill) activePill.style.display = 'flex';
+    if (activeSummary) activeSummary.textContent = savedData.label;
+    if (clearBtn) clearBtn.style.display = 'block';
+  } else {
+    if (labelEl) labelEl.textContent = 'Elegir Moto o Bici';
+    if (subEl) subEl.textContent = 'Toca para filtrar refacciones compatibles';
+    if (actionTag) actionTag.innerHTML = '<span>Seleccionar ▾</span>';
+    if (trigger) trigger.classList.remove('has-active-vehicle');
+    if (activePill) activePill.style.display = 'none';
+    if (clearBtn) clearBtn.style.display = 'none';
+  }
+}
+
+function restoreSavedVehicle() {
+  try {
+    const raw = localStorage.getItem('bdn_saved_vehicle');
+    if (raw) {
+      const data = JSON.parse(raw);
+      if (data && (data.type || data.brand)) {
+        applyVehicleFilterLogic(data.type || 'all', data.brand || 'all', false);
+      }
+    }
+  } catch (e) {
+    console.warn('Error restaurando vehículo guardado:', e);
+  }
+}
+
+function openVehicleModal() {
+  const modal = document.getElementById('vehicle-modal-backdrop');
+  if (!modal) return;
+  modal.classList.add('active');
+  document.body.classList.add('modal-open-lock');
+  document.documentElement.classList.add('modal-open-lock');
+}
+
+function closeVehicleModal() {
+  const modal = document.getElementById('vehicle-modal-backdrop');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.classList.remove('modal-open-lock');
+  document.documentElement.classList.remove('modal-open-lock');
+}
+
+function handleVehicleBackdropClick(e) {
+  const modal = document.getElementById('vehicle-modal-backdrop');
+  if (e.target === modal) {
+    closeVehicleModal();
+  }
+}
+
+function saveAndApplyVehicleModal() {
+  const modalType = document.getElementById('modal-vehicle-type-select');
+  const modalBrand = document.getElementById('modal-vehicle-brand-select');
+  const type = modalType ? modalType.value : 'all';
+  const brand = modalBrand ? modalBrand.value : 'all';
+
+  applyVehicleFilterLogic(type, brand, true);
+  closeVehicleModal();
+}
+
+function clearVehicleFilter() {
+  applyVehicleFilterLogic('all', 'all', true);
+  closeVehicleModal();
+}
+
+// Control del Menú Móvil Lateral
+function openMobileMenu() {
+  const menu = document.getElementById('mobile-menu-backdrop');
+  if (!menu) return;
+  menu.classList.add('open');
+  document.body.classList.add('modal-open-lock');
+  document.documentElement.classList.add('modal-open-lock');
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobile-menu-backdrop');
+  if (!menu) return;
+  menu.classList.remove('open');
+  document.body.classList.remove('modal-open-lock');
+  document.documentElement.classList.remove('modal-open-lock');
+}
+
+function handleMobileMenuBackdropClick(e) {
+  const menu = document.getElementById('mobile-menu-backdrop');
+  if (e.target === menu) {
+    closeMobileMenu();
+  }
+}
+
+// Exposición global para atributos onclick
+window.openVehicleModal = openVehicleModal;
+window.closeVehicleModal = closeVehicleModal;
+window.handleVehicleBackdropClick = handleVehicleBackdropClick;
+window.saveAndApplyVehicleModal = saveAndApplyVehicleModal;
+window.clearVehicleFilter = clearVehicleFilter;
+window.openMobileMenu = openMobileMenu;
+window.closeMobileMenu = closeMobileMenu;
+window.handleMobileMenuBackdropClick = handleMobileMenuBackdropClick;
 
 function setupSearchEngine() {
   const searchInput = document.getElementById('main-search-input');
