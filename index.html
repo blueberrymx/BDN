@@ -30,8 +30,6 @@
       <canvas id="intro-canvas" class="intro-canvas-fallback"></canvas>
     </div>
 
-    <button id="btn-skip-intro" class="intro-skip-btn" title="Saltar presentación y entrar directamente a la tienda">Saltar Intro / Ir a la Tienda ✕</button>
-
     <div class="intro-gradient-mask"></div>
 
     <div class="intro-content">
@@ -50,8 +48,7 @@
       </p>
 
       <button id="btn-start-experience" class="intro-start-btn">
-        <span>Iniciar Tienda BDN</span>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span>Iniciar</span>
       </button>
     </div>
 
@@ -104,21 +101,27 @@
         <button id="toggle-menudeo" class="toggle-pill active">
           Menudeo
         </button>
-        <button id="toggle-mayoreo" class="toggle-pill mayoreo-pill">
-          🔥 Mayoreo (+6 pzas)
+        <button id="toggle-mayoreo" class="toggle-pill mayoreo-pill" title="10% de descuento directo a partir de 6 piezas">
+          <span class="pill-full-text">🔥 Mayoreo (-10% en +6 pzas)</span>
+          <span class="pill-short-text">🔥 Mayoreo -10%</span>
         </button>
       </div>
 
       <div class="header-actions">
         <!-- 1. Botón de Mi Cuenta / Registro Profesional -->
         <button id="user-account-btn" class="header-action-btn user-account-btn" title="Registro / Iniciar sesión">
-          <span>👤 Mi Cuenta</span>
+          <span class="btn-icon">👤</span><span class="btn-text"> Mi Cuenta</span>
         </button>
 
         <!-- Botón de Carrito -->
         <button class="header-action-btn cart-btn" title="Ver carrito de compras">
-          <span>🛒 Carrito</span>
+          <span class="btn-icon">🛒</span><span class="btn-text"> Carrito</span>
           <span id="cart-counter-badge" class="cart-count-badge">0</span>
+        </button>
+
+        <!-- Botón de Menú de Categorías (Visible en Móvil) -->
+        <button id="mobile-menu-btn" class="header-action-btn mobile-menu-btn" title="Menú de Categorías y Secciones" aria-label="Abrir Menú de Categorías" onclick="openMobileMenu()">
+          <span class="btn-icon">☰</span>
         </button>
       </div>
     </div>
@@ -139,39 +142,62 @@
     </div>
   </nav>
 
-  <!-- Buscador por Vehículo (Icono blanco sólido) -->
+  <!-- Buscador por Vehículo (Modo Dual: Desktop completo / Móvil cuadro compacto interactivo) -->
   <section class="vehicle-selector-bar">
-    <div class="container vehicle-selector-inner">
-      <div class="vehicle-selector-title">
-        <div class="vehicle-icon-box">
-          <svg viewBox="0 0 24 24"><path d="M19.44 9.03L15.41 5H11v2h3.59l2 2H5c-2.8 0-5 2.2-5 5s2.2 5 5 5c2.46 0 4.45-1.69 4.9-4h4.2c.45 2.31 2.44 4 4.9 4 2.8 0 5-2.2 5-5 0-2.61-1.92-4.75-4.56-4.97zM7.82 15c-.4 1.18-1.52 2-2.82 2-1.66 0-3-1.34-3-3s1.34-3 3-3c1.3 0 2.42.82 2.82 2H5v2h2.82zm11.18 2c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+    <div class="container">
+      <!-- Versión Escritorio -->
+      <div class="vehicle-selector-inner desktop-vehicle-selector">
+        <div class="vehicle-selector-title">
+          <div class="vehicle-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M19.44 9.03L15.41 5H11v2h3.59l2 2H5c-2.8 0-5 2.2-5 5s2.2 5 5 5c2.46 0 4.45-1.69 4.9-4h4.2c.45 2.31 2.44 4 4.9 4 2.8 0 5-2.2 5-5 0-2.61-1.92-4.75-4.56-4.97zM7.82 15c-.4 1.18-1.52 2-2.82 2-1.66 0-3-1.34-3-3s1.34-3 3-3c1.3 0 2.42.82 2.82 2H5v2h2.82zm11.18 2c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+          </div>
+          <div>
+            <h3>Buscador por Vehículo</h3>
+            <p>Encuentra refacciones 100% compatibles con tu moto o bicicleta</p>
+          </div>
         </div>
-        <div>
-          <h3>Buscador por Vehículo</h3>
-          <p>Encuentra refacciones 100% compatibles con tu moto o bicicleta</p>
+
+        <div class="vehicle-selector-form">
+          <select id="vehicle-type-select" class="vehicle-select">
+            <option value="all">Tipo: Todos</option>
+            <option value="moto">Motocicleta / Scooter</option>
+            <option value="bici">Bicicleta / MTB / Urbana</option>
+          </select>
+
+          <select id="vehicle-brand-select" class="vehicle-select">
+            <option value="all">Marca de Vehículo: Todas</option>
+            <option value="italika">Italika</option>
+            <option value="windsor">Windsor</option>
+            <option value="vento">Vento</option>
+            <option value="honda">Honda</option>
+            <option value="bajaj">Bajaj</option>
+            <option value="alessia">Alessia</option>
+          </select>
+
+          <button id="btn-apply-vehicle-filter" class="btn-filter-vehicle">
+            Filtrar Compatibilidad
+          </button>
         </div>
       </div>
 
-      <div class="vehicle-selector-form">
-        <select id="vehicle-type-select" class="vehicle-select">
-          <option value="all">Tipo: Todos</option>
-          <option value="moto">Motocicleta / Scooter</option>
-          <option value="bici">Bicicleta / MTB / Urbana</option>
-        </select>
-
-        <select id="vehicle-brand-select" class="vehicle-select">
-          <option value="all">Marca de Vehículo: Todas</option>
-          <option value="italika">Italika</option>
-          <option value="windsor">Windsor</option>
-          <option value="vento">Vento</option>
-          <option value="honda">Honda</option>
-          <option value="bajaj">Bajaj</option>
-          <option value="alessia">Alessia</option>
-        </select>
-
-        <button id="btn-apply-vehicle-filter" class="btn-filter-vehicle">
-          Filtrar Compatibilidad
-        </button>
+      <!-- Versión Móvil: Un solo cuadro compacto e interactivo -->
+      <div class="vehicle-selector-mobile-trigger" id="vehicle-mobile-trigger" onclick="openVehicleModal()">
+        <div class="vehicle-mobile-trigger-content">
+          <div class="vehicle-mobile-icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M19.44 9.03L15.41 5H11v2h3.59l2 2H5c-2.8 0-5 2.2-5 5s2.2 5 5 5c2.46 0 4.45-1.69 4.9-4h4.2c.45 2.31 2.44 4 4.9 4 2.8 0 5-2.2 5-5 0-2.61-1.92-4.75-4.56-4.97zM7.82 15c-.4 1.18-1.52 2-2.82 2-1.66 0-3-1.34-3-3s1.34-3 3-3c1.3 0 2.42.82 2.82 2H5v2h2.82zm11.18 2c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+          </div>
+          <div class="vehicle-mobile-text-group">
+            <div class="vehicle-mobile-main-text" id="vehicle-mobile-main-text">
+              <strong>Vehículo:</strong> <span id="vehicle-selected-label">Elegir Moto o Bici</span>
+            </div>
+            <div class="vehicle-mobile-sub-text" id="vehicle-mobile-sub-text">
+              Toca para filtrar refacciones compatibles
+            </div>
+          </div>
+        </div>
+        <div class="vehicle-mobile-action-tag" id="vehicle-mobile-action-tag">
+          <span>Seleccionar ▾</span>
+        </div>
       </div>
     </div>
   </section>
@@ -233,13 +259,13 @@
             <div class="slide-content-wrapper">
               <div class="slide-badge-row">
                 <span class="badge-slide-orange">Distribución a Talleres</span>
-                <span class="badge-slide-yellow">Mayoreo desde 6 pzas</span>
+                <span class="badge-slide-yellow">Mayoreo (10% Desc. desde 6 pzas)</span>
               </div>
               <h2 class="slide-title">
-                Surtimos tu Taller o Refaccionaria <br><span class="highlight-yellow">con Precio Directo</span>
+                Surtimos tu Taller o Refaccionaria <br><span class="highlight-yellow">con 10% de Descuento</span>
               </h2>
               <p class="slide-description">
-                Precios especiales para mecánicos de San Luis Potosí y toda la República Mexicana. Llantas, balatas, cadenas, bujías y aceites con facturación inmediata.
+                10% de descuento directo sobre el precio publicado a partir de 6 piezas para mecánicos y refaccionarias de San Luis Potosí y todo México. Facturación inmediata.
               </p>
 
               <div class="slide-specs-row">
@@ -248,8 +274,8 @@
                   <div class="spec-lbl">Mínimo Mayoreo</div>
                 </div>
                 <div class="spec-pill">
-                  <div class="spec-val">Hasta 35%</div>
-                  <div class="spec-lbl">Margen de Ganancia</div>
+                  <div class="spec-val">10% OFF</div>
+                  <div class="spec-lbl">Descuento Directo</div>
                 </div>
                 <div class="spec-pill">
                   <div class="spec-val">8 Tiendas</div>
@@ -695,6 +721,123 @@
       <button type="button" id="psp-modal-close-btn" class="modal-close-btn" onclick="closePspCheckoutModal()" aria-label="Cerrar pasarela de pago">&times;</button>
       <div id="psp-checkout-modal-content">
         <!-- Renderizado dinámicamente por el motor PSP en store.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL / FICHA EMERGENTE DE SELECCIÓN DE VEHÍCULO (VERSIÓN MÓVIL)
+       ====================================================================== -->
+  <div id="vehicle-modal-backdrop" class="spec-modal-backdrop vehicle-modal-backdrop" onclick="handleVehicleBackdropClick(event)">
+    <div class="spec-modal-box vehicle-modal-box">
+      <button type="button" class="modal-close-btn" onclick="closeVehicleModal()" aria-label="Cerrar ventana">&times;</button>
+      <div class="vehicle-modal-header">
+        <div class="vehicle-modal-icon-badge">
+          <svg viewBox="0 0 24 24"><path d="M19.44 9.03L15.41 5H11v2h3.59l2 2H5c-2.8 0-5 2.2-5 5s2.2 5 5 5c2.46 0 4.45-1.69 4.9-4h4.2c.45 2.31 2.44 4 4.9 4 2.8 0 5-2.2 5-5 0-2.61-1.92-4.75-4.56-4.97zM7.82 15c-.4 1.18-1.52 2-2.82 2-1.66 0-3-1.34-3-3s1.34-3 3-3c1.3 0 2.42.82 2.82 2H5v2h2.82zm11.18 2c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+        </div>
+        <div>
+          <h3>Buscador por Vehículo</h3>
+          <p>Selecciona tu moto o bici para mostrar refacciones 100% compatibles</p>
+        </div>
+      </div>
+
+      <div class="vehicle-modal-body">
+        <div class="form-group">
+          <label for="modal-vehicle-type-select">1. Tipo de Vehículo:</label>
+          <select id="modal-vehicle-type-select" class="form-control vehicle-modal-select">
+            <option value="all">Todos los vehículos (Motos y Bicis)</option>
+            <option value="moto">🏍️ Motocicleta / Scooter / Trabajo</option>
+            <option value="bici">🚲 Bicicleta / Montaña / Urbana</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="modal-vehicle-brand-select">2. Marca de tu Vehículo:</label>
+          <select id="modal-vehicle-brand-select" class="form-control vehicle-modal-select">
+            <option value="all">Todas las marcas</option>
+            <option value="italika">Italika</option>
+            <option value="windsor">Windsor</option>
+            <option value="vento">Vento</option>
+            <option value="honda">Honda</option>
+            <option value="bajaj">Bajaj</option>
+            <option value="alessia">Alessia</option>
+          </select>
+        </div>
+
+        <div id="vehicle-current-active-pill" class="vehicle-active-pill" style="display:none;">
+          <span>Vehículo activo:</span> <strong id="vehicle-active-summary">Italika (Moto)</strong>
+        </div>
+
+        <div class="vehicle-modal-buttons">
+          <button type="button" class="btn-vehicle-modal-save" onclick="saveAndApplyVehicleModal()">
+            ✓ Guardar Selección y Filtrar
+          </button>
+          <button type="button" id="btn-vehicle-modal-clear" class="btn-vehicle-modal-clear" onclick="clearVehicleFilter()" style="display:none;">
+            ✕ Quitar Selección (Ver Todo)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       DRAWER / FICHA EMERGENTE DE MENÚ DE NAVEGACIÓN (VERSIÓN MÓVIL)
+       ====================================================================== -->
+  <div id="mobile-menu-backdrop" class="mobile-menu-backdrop" onclick="handleMobileMenuBackdropClick(event)">
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-header">
+        <div class="mobile-menu-logo">
+          <img src="assets/images/logo/bdn-logo.png" alt="BDN Logo" style="height: 38px; width: auto; object-fit: contain;">
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeMobileMenu()" aria-label="Cerrar menú">&times;</button>
+      </div>
+
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-section-title">Categorías y Secciones</div>
+        <ul class="mobile-menu-list">
+          <li>
+            <a href="#catalogo-section" onclick="filterByCategory('all', event); closeMobileMenu();">
+              <span class="menu-icon">⚡</span> Todo el Catálogo
+            </a>
+          </li>
+          <li>
+            <a href="#marcas-section" onclick="closeMobileMenu();">
+              <span class="menu-icon">🏁</span> Marcas Oficiales (21 Marcas)
+            </a>
+          </li>
+          <li>
+            <a href="#catalogo-section" onclick="filterByCategory('refacciones-moto', event); closeMobileMenu();">
+              <span class="menu-icon">🛵</span> Refacciones para Moto
+            </a>
+          </li>
+          <li>
+            <a href="#catalogo-section" onclick="filterByCategory('bicicletas', event); closeMobileMenu();">
+              <span class="menu-icon">🚲</span> Bicicletas de Montaña y Urbanas
+            </a>
+          </li>
+          <li>
+            <a href="#catalogo-section" onclick="filterByCategory('refacciones-bici', event); closeMobileMenu();">
+              <span class="menu-icon">⚙️</span> Refacciones para Bicicleta
+            </a>
+          </li>
+          <li>
+            <a href="#catalogo-section" onclick="filterByCategory('bicimotos', event); closeMobileMenu();">
+              <span class="menu-icon">⚡</span> Bicimotos E-Bikes
+            </a>
+          </li>
+          <li>
+            <a href="#sucursales-section" onclick="closeMobileMenu();">
+              <span class="menu-icon">🏢</span> Red de 8 Sucursales en SLP
+            </a>
+          </li>
+        </ul>
+
+        <div class="mobile-menu-contact-box">
+          <div style="font-weight:700; color:#0A1931; font-size:0.84rem; margin-bottom:6px;">Atención Centralizada BDN:</div>
+          <a href="https://wa.me/524442254705?text=Hola%20BDN,%20solicito%20atenci%C3%B3n%20con%20el%20asistente%20virtual" target="_blank" rel="noopener noreferrer" class="mobile-menu-wa-btn">
+            💬 WhatsApp Central: 444 225 4705
+          </a>
+        </div>
       </div>
     </div>
   </div>
