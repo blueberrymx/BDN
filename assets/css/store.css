@@ -235,10 +235,12 @@
   padding: 3px 8px;
   border-radius: var(--radius-sm);
   text-transform: uppercase;
+  background: var(--text-dark-blue);
+  color: #FFF;
 }
 
 .badge-mayoreo {
-  background: var(--accent-orange);
+  background: var(--text-dark-blue);
   color: #FFF;
 }
 
