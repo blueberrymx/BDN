@@ -104,14 +104,18 @@
   backface-visibility: hidden;
 }
 
-@media (hover: none) and (pointer: coarse) {
-  .hero-carousel-section,
-  .shipping-section-parallax,
-  #catalogo-section.parallax-catalog,
-  #sucursales-section.parallax-branches,
-  .brands-section-wrapper {
-    background-attachment: scroll;
-  }
+/* Corrección de Parallax de Fondos 100% Real y Fluido en Móvil y Desktop */
+.hero-carousel-section,
+.shipping-section-parallax,
+#catalogo-section.parallax-catalog,
+#sucursales-section.parallax-branches,
+.brands-section-wrapper {
+  background-attachment: fixed !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .brands-container-inner {
@@ -379,6 +383,42 @@
 .stock-view-all-link {
   color: var(--accent-orange);
   font-size: 0.74rem;
+}
+
+/* Enlace directo a existencias en 8 sucursales (Sin cuadro gris) */
+.product-view-stores-link {
+  display: inline-flex;
+  align-items: center;
+  margin: 6px 0 8px 0;
+  cursor: pointer;
+}
+
+.product-view-stores-link span {
+  color: var(--accent-orange);
+  font-size: 0.84rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.product-view-stores-link span:hover {
+  color: var(--accent-orange-hover);
+  text-decoration: underline;
+  transform: translateX(3px);
+}
+
+.wholesale-tag-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: #ECFDF5;
+  color: #15803D;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #A7F3D0;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 /* Pricing Section */
@@ -1129,15 +1169,59 @@
 }
 
 @media (max-width: 768px) {
+  /* 4. Fichas de Entrega Express y Envíos a Todo México más compactas en móvil */
+  .shipping-section-parallax {
+    padding: 8px 0 16px 0 !important;
+  }
+
   .shipping-dual-banner {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    padding: 14px 16px !important;
+    gap: 12px !important;
+    border-radius: var(--radius-md) !important;
   }
+
+  .shipping-column {
+    gap: 6px !important;
+  }
+
   .shipping-column:first-child {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    padding-right: 0;
-    padding-bottom: 20px;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    padding-right: 0 !important;
+    padding-bottom: 12px !important;
   }
+
+  .shipping-header-flex {
+    gap: 10px !important;
+  }
+
+  .shipping-column-icon {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 8px !important;
+  }
+
+  .shipping-column-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .shipping-column h3 {
+    font-size: 0.98rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .shipping-column span {
+    font-size: 0.74rem !important;
+  }
+
+  .shipping-column p {
+    font-size: 0.78rem !important;
+    line-height: 1.36 !important;
+    margin: 0 !important;
+  }
+
   .account-type-selector {
     grid-template-columns: 1fr;
   }
@@ -1679,27 +1763,37 @@
   }
 
   .product-action-row {
-    grid-template-columns: 1fr 29px 29px !important;
-    gap: 4px !important;
-    margin-top: 7px;
+    display: flex !important;
+    width: 100% !important;
+    gap: 0 !important;
+    margin-top: 8px !important;
+  }
+
+  .desktop-only-btn,
+  .btn-check-branches {
+    display: none !important;
   }
 
   .btn-add-cart {
-    font-size: 0.66rem;
-    padding: 7px 4px;
-    border-radius: 7px;
-    gap: 3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 100% !important;
+    font-size: clamp(0.68rem, 2.6vw, 0.78rem) !important;
+    font-weight: 700 !important;
+    padding: 8px 4px !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    line-height: 1.2 !important;
+    box-sizing: border-box !important;
+    letter-spacing: -0.2px;
   }
 
-  .btn-check-branches {
-    width: 29px;
-    height: 30px;
-    border-radius: 7px;
-    font-size: 0.75rem;
-    padding: 0;
+  .product-view-stores-link span {
+    font-size: 0.78rem !important;
   }
 
   /* ------------------------------------------------------------------------

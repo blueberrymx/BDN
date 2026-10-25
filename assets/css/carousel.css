@@ -272,15 +272,100 @@
   background: var(--accent-orange);
 }
 
-/* Responsive */
+/* Responsive: Carrusel más compacto verticalmente solo en móvil */
 @media (max-width: 768px) {
+  .hero-carousel-section {
+    padding: 10px 0 8px 0 !important;
+  }
+
+  .carousel-slide {
+    min-height: 360px !important;
+    align-items: center !important;
+  }
+
   .slide-content-wrapper {
-    padding: 40px 24px;
+    padding: 20px 18px 28px 18px !important;
+    max-width: 100% !important;
   }
+
+  .slide-badge-row {
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .badge-slide-orange,
+  .badge-slide-yellow {
+    font-size: 0.65rem !important;
+    padding: 3px 9px !important;
+  }
+
   .slide-title {
-    font-size: 2.1rem;
+    font-size: 1.45rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 8px !important;
+    letter-spacing: -0.4px !important;
   }
+
+  .slide-description {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 12px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .slide-specs-row {
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .spec-pill {
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+  }
+
+  .spec-pill .spec-val {
+    font-size: 0.86rem !important;
+  }
+
+  .spec-pill .spec-lbl {
+    font-size: 0.58rem !important;
+  }
+
+  .slide-actions {
+    gap: 8px !important;
+  }
+
+  .btn-slide-primary {
+    padding: 8px 16px !important;
+    font-size: 0.82rem !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(255, 85, 0, 0.4) !important;
+  }
+
+  .btn-slide-secondary {
+    padding: 8px 14px !important;
+    font-size: 0.78rem !important;
+    border-radius: 8px !important;
+  }
+
   .carousel-btn {
-    display: none;
+    display: none !important;
+  }
+
+  .carousel-indicators {
+    bottom: 8px !important;
+    padding: 3px 8px !important;
+  }
+
+  .indicator-dot {
+    width: 8px !important;
+    height: 4px !important;
+  }
+
+  .indicator-dot.active {
+    width: 20px !important;
   }
 }
